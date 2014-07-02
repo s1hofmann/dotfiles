@@ -10,6 +10,18 @@ set laststatus=2
 
 "goto matching bracket when closing a bracket
 set showmatch
+
+"Expands <CR> inside brackets
+let g:delimitMate_expand_cr=1
+"Remap S-Tab to Control-L to jump over closing delimiters, e.g. brackets
+imap <C-L> <Plug>delimitMateS-Tab
+
+"Settings for ultiSnips
+let g:UltiSnipsSnippetDir="~/.vim/ultisnips"
+let g:UltiSnipsExpandTrigger="<S-E>e"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 "workaround for showmatch to scroll the screen
 inoremap } }<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
 inoremap ] ]<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
@@ -17,6 +29,8 @@ inoremap ) )<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
 
 "colorscheme torte
 colorscheme hickop
+let g:airline_theme='lucius'
+
 set cursorline
 set ruler
 set showcmd
@@ -32,8 +46,13 @@ nmap <leader>t :TagbarToggle<CR>
 set foldmethod=indent
 set foldlevel=99
 
+"SuperTab settings
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
+let g:SuperTabClosePreviewOnPopupClose=1
+"Accept selected completion using <Enter> key
+let g:SuperTabRetainCompletionType=2
+inoremap <expr><Enter> pumvisible() ? "\<C-y>" : "\<Enter>"
 
 "spellcheck
 nmap <leader>ec :set spell spelllang=en_us<CR>
@@ -60,13 +79,10 @@ let Vimplate = "/usr/bin/vimplate"
 "pep8 settings for python
 set ts=4 sw=4 sts=4 et
 
-let g:SuperTabClosePreviewOnPopupClose=1
-
 "auto cpp complete
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/opencv.tags
 set tags+=~/.vim/tags/current_tags;
-"set tags+=~/.vimtags
 
 "set tags+=~/.vim/tags/gl
 "set tags+=~/.vim/tags/sdl
