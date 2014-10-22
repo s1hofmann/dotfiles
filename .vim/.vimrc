@@ -32,6 +32,11 @@ colorscheme hickop
 let g:airline_theme='lucius'
 
 set cursorline
+
+"change color of column 81 to indicate max. length of lines
+"as recommended by python style guidelines
+autocmd FileType python set colorcolumn=81
+
 set ruler
 set showcmd
 set mouse=a
@@ -42,12 +47,13 @@ syntax on
 filetype on
 set number
 
+map <leader>td <Plug>TaskList
 nmap <leader>t :TagbarToggle<CR>
 set foldmethod=indent
 set foldlevel=99
 
 "SuperTab settings
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<C-n>"
 set completeopt=menuone,longest,preview
 let g:SuperTabClosePreviewOnPopupClose=1
 "Accept selected completion using <Enter> key
@@ -78,11 +84,17 @@ let Vimplate = "/usr/bin/vimplate"
 
 "pep8 settings for python
 set ts=4 sw=4 sts=4 et
+set autoindent
+set smartindent
+set smarttab
 
 "auto cpp complete
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/opencv.tags
-set tags+=~/.vim/tags/current_tags;
+set tags+=~/.vim/tags/pygtk.tags
+set tags+=~/.vim/tags/python3_4.tags
+set tags+=~/.vim/tags/python2_7.tags
+set tags+=~/.vim/tags/*/tags
 
 "set tags+=~/.vim/tags/gl
 "set tags+=~/.vim/tags/sdl
@@ -100,7 +112,11 @@ let OmniCpp_MayCompleteScope = 1 "autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 "build tags for current project
-map <leader>ct :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q -f /home/sim0n/.vim/tags/current_tags .<CR>
+"autocmd FileType cpp map <leader>ct :!ctags -R --sort=yes --c++-kinds=+cdefglmnpstuvx --fields=+afikKlmnsSzt --extra=+q -f /home/sim0n/.vim/tags/current_tags .<CR>
+
+"autocmd FileType python map <leader>ct :!ctags -R --sort=yes --python-kinds=+cfmvi --fields=+afikKlmnsSzt --extra=+q -f /home/sim0n/.vim/tags/current_tags .<CR>
+
+"autocmd FileType c map <leader>ct :!ctags -R --sort=yes --c-kinds=+cdefglmnpstuvw --fields=+afikKlmnsSzt --extra=+q -f /home/sim0n/.vim/tags/current_tags .<CR>
 
 autocmd FileType c map <F9> :!gcc -o "%:p:r" "%:p" && "%:p:r"<CR>
 autocmd FileType c map <F8> :!gcc -o "%:p:r" "%:p" <bar> more<CR>
@@ -111,4 +127,4 @@ autocmd FileType cpp map <F9> :!"%:p:r"<CR>
 
 autocmd FileType python map <F9> :!python "%:p"<CR>
 autocmd FileType python map <F8> :!python2 "%:p"<CR>
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
