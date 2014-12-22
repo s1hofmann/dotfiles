@@ -45,7 +45,9 @@ set noswapfile
 
 syntax on
 filetype on
+set relativenumber
 set number
+
 
 map <leader>td <Plug>TaskList
 nmap <leader>t :TagbarToggle<CR>
@@ -90,10 +92,6 @@ set smarttab
 
 "auto cpp complete
 set tags+=~/.vim/tags/cpp
-set tags+=~/.vim/tags/opencv.tags
-set tags+=~/.vim/tags/pygtk.tags
-set tags+=~/.vim/tags/python3_4.tags
-set tags+=~/.vim/tags/python2_7.tags
 set tags+=~/.vim/tags/*/tags
 
 "set tags+=~/.vim/tags/gl
@@ -102,21 +100,19 @@ set tags+=~/.vim/tags/*/tags
 "set tags+=~/.vim/tags/gtkmm2.4
 "set tags+=~/.vim/tags/gtkmm3.0
 
-let OmniCpp_NamespaceSearch = 1
+let OmniCpp_NamespaceSearch = 2     "namespaces from current buffer and included files
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
+"let OmniCpp_DisplayMode = 1         "show all members
+let OmniCpp_ShowScopeInAbbr = 1     
 let OmniCpp_ShowPrototypeInAbbr = 1 "show function parameters
 let OmniCpp_MayCompleteDot = 1 "autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 "autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 "autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD", "cv"]
 
 "build tags for current project
-"autocmd FileType cpp map <leader>ct :!ctags -R --sort=yes --c++-kinds=+cdefglmnpstuvx --fields=+afikKlmnsSzt --extra=+q -f /home/sim0n/.vim/tags/current_tags .<CR>
-
-"autocmd FileType python map <leader>ct :!ctags -R --sort=yes --python-kinds=+cfmvi --fields=+afikKlmnsSzt --extra=+q -f /home/sim0n/.vim/tags/current_tags .<CR>
-
-"autocmd FileType c map <leader>ct :!ctags -R --sort=yes --c-kinds=+cdefglmnpstuvw --fields=+afikKlmnsSzt --extra=+q -f /home/sim0n/.vim/tags/current_tags .<CR>
+"work in progress...
 
 autocmd FileType c map <F9> :!gcc -o "%:p:r" "%:p" && "%:p:r"<CR>
 autocmd FileType c map <F8> :!gcc -o "%:p:r" "%:p" <bar> more<CR>
@@ -124,6 +120,7 @@ autocmd FileType c map <F7> :!"%:p:r"<CR>
 
 autocmd FileType cpp map <F5> :!make<CR>
 autocmd FileType cpp map <F9> :!"%:p:r"<CR>
+"autocmd FileType cpp call Test()
 
 autocmd FileType python map <F9> :!python "%:p"<CR>
 autocmd FileType python map <F8> :!python2 "%:p"<CR>
