@@ -85,3 +85,5 @@ alias nmux='tmux new -s'
 alias kmux='tmux kill-session -t'
 alias amux='tmux attach -t'
 alias lmux='tmux list-sessions'
+
+alias pwgen='pwgen -yn'
