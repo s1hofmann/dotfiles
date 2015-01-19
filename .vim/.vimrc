@@ -1,6 +1,9 @@
 let mapleader=","
 set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-filetype plugin indent on
+"non vi compatible mode
+set nocp
+filetype plugin on
+filetype indent on
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 let g:Tex_MultipleCompileFormats = "dvi,pdf"
@@ -8,8 +11,13 @@ let g:Tex_MultipleCompileFormats = "dvi,pdf"
 "display statusbar
 set laststatus=2
 
-"goto matching bracket when closing a bracket
+"show matching bracket when closing one
 set showmatch
+
+"workaround for showmatch to scroll screen
+inoremap } }<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
+inoremap ] ]<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
+inoremap ) )<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
 
 "Expands <CR> inside brackets
 let g:delimitMate_expand_cr=1
@@ -19,13 +27,8 @@ imap <C-L> <Plug>delimitMateS-Tab
 "Settings for ultiSnips
 let g:UltiSnipsSnippetDir="~/.vim/ultisnips"
 let g:UltiSnipsExpandTrigger="<S-E>e"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-"workaround for showmatch to scroll the screen
-inoremap } }<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
-inoremap ] ]<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
-inoremap ) )<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
+let g:UltiSnipsJumpForwardTrigger="<S-L>l"
+let g:UltiSnipsJumpBackwardTrigger="<S-H>h"
 
 "colorscheme torte
 colorscheme hickop
@@ -47,7 +50,6 @@ syntax on
 filetype on
 set relativenumber
 set number
-
 
 map <leader>td <Plug>TaskList
 nmap <leader>t :TagbarToggle<CR>
@@ -91,28 +93,21 @@ set smartindent
 set smarttab
 
 "auto cpp complete
-set tags+=~/.vim/tags/cpp
-set tags+=~/.vim/tags/*/tags
+set tags+=~/.vim/tags/cpp.tags
+set tags+=~/.vim/tags/opencv.tags
+set tags+=~/.vim/tags/sdl.tags
+map <leader>ut :call GenerateTags()<CR>
 
-"set tags+=~/.vim/tags/gl
-"set tags+=~/.vim/tags/sdl
-"set tags+=~/.vim/tags/qt4
-"set tags+=~/.vim/tags/gtkmm2.4
-"set tags+=~/.vim/tags/gtkmm3.0
-
-let OmniCpp_NamespaceSearch = 2     "namespaces from current buffer and included files
-let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_NamespaceSearch = 1     "namespaces from current buffer and included files
+let OmniCpp_GlobalScopeSearch = 2
 let OmniCpp_ShowAccess = 1
-"let OmniCpp_DisplayMode = 1         "show all members
-let OmniCpp_ShowScopeInAbbr = 1     
+let OmniCpp_DisplayMode = 1         "show all members
+let OmniCpp_ShowScopeInAbbr = 0     
 let OmniCpp_ShowPrototypeInAbbr = 1 "show function parameters
 let OmniCpp_MayCompleteDot = 1 "autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 "autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 "autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD", "cv"]
-
-"build tags for current project
-"work in progress...
 
 autocmd FileType c map <F9> :!gcc -o "%:p:r" "%:p" && "%:p:r"<CR>
 autocmd FileType c map <F8> :!gcc -o "%:p:r" "%:p" <bar> more<CR>
@@ -120,8 +115,9 @@ autocmd FileType c map <F7> :!"%:p:r"<CR>
 
 autocmd FileType cpp map <F5> :!make<CR>
 autocmd FileType cpp map <F9> :!"%:p:r"<CR>
-"autocmd FileType cpp call Test()
 
 autocmd FileType python map <F9> :!python "%:p"<CR>
 autocmd FileType python map <F8> :!python2 "%:p"<CR>
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+
+autocmd BufWritePost * :call GenerateTags()
