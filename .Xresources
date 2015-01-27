@@ -1,0 +1,12 @@
+URxvt.scrollBar: false
+URxvt*selectToClipboard: true
+URxvt*scrollTtyKeypress: true
+
+URxvt.font: xft:Inconsolata:Medium:size=9
+
+URxvt.url-launcher: /usr/bin/firefox -new-tab
+URxvt.colorUL: #4682B4
+URxvt.url-select.underline: true
+
+URxvt.foreground: green
+URxvt.background: black
