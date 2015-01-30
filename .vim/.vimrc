@@ -69,6 +69,24 @@ nmap <leader>ec :set spell spelllang=en_us<CR>
 nmap <leader>dc :set spell spelllang=de_de<CR>
 nmap <leader>nc :set nospell<CR>
 
+"syntaxcheck
+let g:syntastic_check_on_wq=0
+let g:syntastic_cursor_column=1
+"Sign options
+let g:syntastic_error_symbol="E>"
+let g:syntastic_style_error_symbol="S>"
+let g:syntastic_warning_symbol="W>"
+let g:syntastic_style_warning_symbol="SW"
+"Automatically jump to first error, but skip all warnings
+let g:syntastic_auto_jump=2
+"Automatically open error list (location list)
+let g:syntastic_auto_loc_list=1
+"Status line format
+let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+"Compiler options
+let g:syntastic_cpp_compiler='gcc'
+let g:syntastic_cpp_compiler_options='-std=c++11'
+
 "mappings for quickfix window
 nmap <F2> :ccl<CR>
 nmap <F3> :cn<CR>
