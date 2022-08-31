@@ -13,6 +13,7 @@ require("plugs.colorizer")
 require("plugs.nvimtree")
 require("plugs.mason")
 require("plugs.comment")
+require("plugs.cloak")
 
 -- Incremental live completion (note: this is now a default on master).
 vim.o.inccommand = 'nosplit'

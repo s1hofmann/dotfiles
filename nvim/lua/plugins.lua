@@ -56,6 +56,9 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'glepnir/lspsaga.nvim'
 
+  -- Plugin to hide secrets in .env files
+  use 'laytan/cloak.nvim'
+
 
   -- Snippets
   use 'L3MON4D3/LuaSnip' -- Snippets plugin.
