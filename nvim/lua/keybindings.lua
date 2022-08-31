@@ -21,10 +21,10 @@ map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
 -- Resize with arrows
-map("n", "<C-Up>", ":resize -2<CR>")
-map("n", "<C-Down>", ":resize +2<CR>")
-map("n", "<C-Left>", ":vertical resize -2<CR>")
-map("n", "<C-Right>", ":vertical resize +2<CR>")
+-- map("n", "<C-Up>", ":resize -2<CR>")
+-- map("n", "<C-Down>", ":resize +2<CR>")
+-- map("n", "<C-Left>", ":vertical resize -2<CR>")
+-- map("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Visual --
 -- Stay in indent mode
@@ -34,9 +34,6 @@ map("v", ">", ">gv")
 -- Navigate buffers
 map("n", "<S-l>", ":bnext<CR>")
 map("n", "<S-h>", ":bprevious<CR>")
-
--- Clear highlights
-map("n", "<leader>h", "<cmd>nohlsearch<CR>")
 
 map('n', 'ct', ':tabc<cr>')
 
