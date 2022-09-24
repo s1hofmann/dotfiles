@@ -15,10 +15,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Move around splits using Ctrl + {h,j,k,l}
-map('n', '<C-h>', '<C-w>h')
-map('n', '<C-j>', '<C-w>j')
-map('n', '<C-k>', '<C-w>k')
-map('n', '<C-l>', '<C-w>l')
+map('n', '<S-h>', '<C-w>h')
+map('n', '<S-j>', '<C-w>j')
+map('n', '<S-k>', '<C-w>k')
+map('n', '<S-l>', '<C-w>l')
 
 -- Resize with arrows
 -- map("n", "<C-Up>", ":resize -2<CR>")
@@ -31,9 +31,16 @@ map('n', '<C-l>', '<C-w>l')
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
+map("n", "<leader><leader>", ":Telescope buffers theme=dropdown<CR>")
+map("n", "<leader>tb", ":Telescope current_buffer_fuzzy_find theme=dropdown<CR>")
+map("n", "<leader>tf", ":Telescope find_files theme=dropdown<CR>")
+map("n", "<leader>tg", ":Telescope live_grep theme=dropdown<CR>")
+map("n", "<C-p>", ":Telescope projects theme=dropdown<CR>")
+map("n", "<leader>?", ":Telescope oldfiles theme=dropdown<CR>")
+
 -- Navigate buffers
-map("n", "<S-l>", ":bnext<CR>")
-map("n", "<S-h>", ":bprevious<CR>")
+-- map("n", "<S-l>", ":bnext<CR>")
+-- map("n", "<S-h>", ":bprevious<CR>")
 
 map('n', 'ct', ':tabc<cr>')
 
@@ -50,9 +57,10 @@ map('n', '<leader>s', ':w<CR>')
 
 -- Open/close symbol outline
 map('n', '<leader>oo', ':SymbolsOutline<CR>')
-map('n', '<leader>oc', ':SymbolsOutlineClose<CR>')
 
-map('n', '<leader>to', ':NvimTreeToggle<CR>')
+map('n', '<leader>t', ':NvimTreeToggle<CR>')
+
+map('n', '<leader>p', ':pu<CR>')
 
 map('v', '<leader>cs', '"+y<CR>')
 

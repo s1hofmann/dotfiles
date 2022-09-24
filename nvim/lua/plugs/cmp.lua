@@ -2,12 +2,60 @@
 
 local luasnip = require('luasnip')
 local cmp = require('cmp')
+local lspkind = require('lspkind')
+
+-- local kind_icons = {
+-- 	Text = "",
+-- 	Method = "",
+-- 	Function = "",
+-- 	Constructor = "",
+-- 	Field = "",
+-- 	Variable = "",
+-- 	Class = "",
+-- 	Interface = "",
+-- 	Module = "",
+-- 	Property = "",
+-- 	Unit = "",
+-- 	Value = "",
+-- 	Enum = "",
+-- 	Keyword = "",
+-- 	Snippet = "",
+-- 	Color = "",
+-- 	File = "",
+-- 	Reference = "",
+-- 	Folder = "",
+-- 	EnumMember = "",
+-- 	Constant = "",
+-- 	Struct = "",
+-- 	Event = "",
+-- 	Operator = "",
+-- 	TypeParameter = "",
+-- }
+--
+-- local menu_icon = {
+--   nvim_lsp = 'λ',
+--   luasnip = '⋗',
+--   buffer = 'Ω',
+--   path = '🖫',
+-- }
 
 cmp.setup {
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
     end,
+  },
+  formatting = {
+      format = lspkind.cmp_format({
+      mode = 'symbol_text', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+    })
+    -- fields = {'menu', 'abbr', 'kind'},
+    -- format = function(entry, item)
+    --   item.menu = menu_icon[entry.source.name]
+    --   item.kind = kind_icons[item.kind]
+    --   return item
+    -- end,
   },
   mapping = {
     ['<C-k>'] = cmp.mapping.select_prev_item(),
@@ -46,5 +94,9 @@ cmp.setup {
     { name = 'buffer' },
     { name = 'path' },
     { name = 'nvim_lua' },
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
 }

@@ -26,12 +26,23 @@ require('packer').startup(function(use)
   
   use 'tpope/vim-fugitive' -- Git commands for nvim.
 
-  -- Cemment
+  -- Nice completion icons
+  use 'onsails/lspkind.nvim'
+
+  use 'lukas-reineke/indent-blankline.nvim'
+
+  -- Project management
+  use 'ahmedkhalf/project.nvim'
+
+  use("nvim-lualine/lualine.nvim")
+
+  -- Comment
   use 'numToStr/Comment.nvim'
 
   use 'tpope/vim-surround' -- A great tool for adding, removing and changing braces, brackets, quotes and various tags around your text.
 
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- UI to select things (files, search results, open buffers...)
+
   use { 'romgrk/barbar.nvim', requires = {'kyazdani42/nvim-web-devicons'} } -- A bar that will show at the top of you nvim containing your open buffers. Similarly to how other editors show tabs with open files.
 
   use 'itchyny/lightline.vim' -- Fancier status line with some information that will be displayed at the bottom.
@@ -66,12 +77,17 @@ require('packer').startup(function(use)
 
   -- Colorscheme
   use 'folke/tokyonight.nvim' -- tokyonight theme
+  use "olimorris/onedarkpro.nvim"
 
   -- Code outline
   use 'simrat39/symbols-outline.nvim' -- Code outline
 
   -- Inline hex colors
   use 'NvChad/nvim-colorizer.lua' -- Inline colorizer
+
+  use 'mfussenegger/nvim-dap'
+
+  use 'folke/which-key.nvim'
 
   -- Startscreen
   use {

@@ -14,6 +14,10 @@ require("plugs.nvimtree")
 require("plugs.mason")
 require("plugs.comment")
 require("plugs.cloak")
+require("plugs.indent")
+require("plugs.project")
+require("plugs.whichkey")
+require("plugs.lualine")
 
 -- Incremental live completion (note: this is now a default on master).
 vim.o.inccommand = 'nosplit'
@@ -36,10 +40,19 @@ vim.o.breakindent = true
 
 -- Save undo history.
 vim.opt.undofile = true
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 -- Case insensitive searching unless /C or capital in search.
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.opt.smartindent = true -- make indenting smarter again
+
+vim.opt.foldenable = true 
+
+vim.opt.expandtab = true -- convert tabs to spaces
+vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
+vim.opt.softtabstop = 2 -- number of spaces that <Tab> uses while editing
 
 -- Decrease update time.
 vim.o.updatetime = 250
@@ -72,7 +85,9 @@ vim.api.nvim_exec(
 vim.api.nvim_command [[autocmd! User LspDiagnosticsChanged lua update_diagnostics_loclist()]]
 
 -- Set dark theme if macOS theme is dark, light otherwise.
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme onedarkpro")  -- Lua
+
 -- local theme = vim.fn.system("defaults read -g AppleInterfaceStyle")
 -- if (string.find(theme, 'Dark')) then
 -- 	vim.g.tokyonight_style = "storm"
