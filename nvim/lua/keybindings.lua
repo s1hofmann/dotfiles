@@ -15,10 +15,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Move around splits using Ctrl + {h,j,k,l}
-map('n', '<S-h>', '<C-w>h')
-map('n', '<S-j>', '<C-w>j')
-map('n', '<S-k>', '<C-w>k')
-map('n', '<S-l>', '<C-w>l')
+map('n', '<leader>wl', '<C-w>h')
+map('n', '<leader>wd', '<C-w>j')
+map('n', '<leader>wu', '<C-w>k')
+map('n', '<leader>wr', '<C-w>l')
 
 -- Resize with arrows
 -- map("n", "<C-Up>", ":resize -2<CR>")
@@ -43,6 +43,10 @@ map("n", "<leader>?", ":Telescope oldfiles theme=dropdown<CR>")
 -- map("n", "<S-h>", ":bprevious<CR>")
 
 map('n', 'ct', ':tabc<cr>')
+map('n', 'bc', ':BufferClose<cr>')
+map('n', 'bfc', ':BufferClose!<cr>')
+map('n', 'bn', ':BufferNext<cr>')
+map('n', 'bp', ':BufferPrevious<cr>')
 
 -- Close Quickfix-List
 map("n", "<leader>cc", "<cmd>:ccl<CR>")
@@ -63,4 +67,14 @@ map('n', '<leader>t', ':NvimTreeToggle<CR>')
 map('n', '<leader>p', ':pu<CR>')
 
 map('v', '<leader>cs', '"+y<CR>')
+
+map('n', '<F5>', ":DapContinue<CR>")
+map('n', '<F10>', ":DapStepInto<CR>")
+map('n', '<F11>', ":DapStepOut<CR>")
+map('n', '<F12>', ":DapStepOver<CR>")
+map('n', '<leader>b', "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+map('n', '<leader>B', "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+map('n', '<leader>dr', "<cmd>lua require'dap'.repl.open()<CR>")
+map('n', '<leader>dl', "<cmd>lua require'dap'.run_last()<CR>")
+map('n', '<leader>v', "<cmd>lua require'dapui'.eval()<CR>")
 

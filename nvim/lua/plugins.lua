@@ -85,9 +85,13 @@ require('packer').startup(function(use)
   -- Inline hex colors
   use 'NvChad/nvim-colorizer.lua' -- Inline colorizer
 
-  use 'mfussenegger/nvim-dap'
+  -- use 'folke/which-key.nvim'
 
-  use 'folke/which-key.nvim'
+  -- debug adapters
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+
+  -- formatting
+  use 'mhartington/formatter.nvim'
 
   -- Startscreen
   use {
