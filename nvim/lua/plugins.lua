@@ -25,6 +25,8 @@ require('packer').startup(function(use)
   use { 'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'} }
   
   use 'tpope/vim-fugitive' -- Git commands for nvim.
+  use 'tpope/vim-surround' -- A great tool for adding, removing and changing braces, brackets, quotes and various tags around your text.
+  use 'tpope/vim-repeat'
 
   -- Nice completion icons
   use 'onsails/lspkind.nvim'
@@ -38,8 +40,6 @@ require('packer').startup(function(use)
 
   -- Comment
   use 'numToStr/Comment.nvim'
-
-  use 'tpope/vim-surround' -- A great tool for adding, removing and changing braces, brackets, quotes and various tags around your text.
 
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- UI to select things (files, search results, open buffers...)
 
@@ -70,6 +70,7 @@ require('packer').startup(function(use)
   -- Plugin to hide secrets in .env files
   use 'laytan/cloak.nvim'
 
+  use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", }
 
   -- Snippets
   use 'L3MON4D3/LuaSnip' -- Snippets plugin.
@@ -92,6 +93,9 @@ require('packer').startup(function(use)
 
   -- formatting
   use 'mhartington/formatter.nvim'
+
+  -- leap motions
+  use 'ggandor/leap.nvim'
 
   -- Startscreen
   use {

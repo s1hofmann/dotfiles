@@ -19,6 +19,8 @@ require("plugs.project")
 require("plugs.lualine")
 require("plugs.formatter")
 require("plugs.dapui")
+require("plugs.leap")
+require("plugs.trouble")
 
 -- Incremental live completion (note: this is now a default on master).
 vim.o.inccommand = 'nosplit'
