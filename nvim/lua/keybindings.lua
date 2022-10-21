@@ -39,14 +39,14 @@ map("n", "<C-p>", ":Telescope projects theme=dropdown<CR>")
 map("n", "<leader>?", ":Telescope oldfiles theme=dropdown<CR>")
 
 -- Navigate buffers
--- map("n", "<S-l>", ":bnext<CR>")
--- map("n", "<S-h>", ":bprevious<CR>")
+map("n", "<S-l>", ":BufferNext<CR>")
+map("n", "<S-h>", ":BufferPrevious<CR>")
 
-map('n', '<leader>ct', ':tabc<cr>')
-map('n', '<leader>cb', ':BufferClose<cr>')
-map('n', '<leader>fcb', ':BufferClose!<cr>')
-map('n', '<leader>nb', ':BufferNext<cr>')
-map('n', '<leader>pb', ':BufferPrevious<cr>')
+map('n', '<leader>tc', ':tabc<cr>')
+map('n', '<leader>bc', ':BufferClose<cr>')
+map('n', '<leader>bfc', ':BufferClose!<cr>')
+map('n', '<leader>bn', ':BufferNext<cr>')
+map('n', '<leader>bp', ':BufferPrevious<cr>')
 
 -- Close Quickfix-List
 map("n", "<leader>cc", "<cmd>:ccl<CR>")
