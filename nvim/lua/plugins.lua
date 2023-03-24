@@ -38,6 +38,8 @@ require('packer').startup(function(use)
 
   use("nvim-lualine/lualine.nvim")
 
+  use { "zbirenbaum/copilot.lua" }
+
   -- Comment
   use 'numToStr/Comment.nvim'
 

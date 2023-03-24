@@ -70,7 +70,9 @@ cmp.setup {
     },
 	-- If you don't set up snippets in the section below, this might crash, either go through the "Snippets" section or remove any `luasnip` related code from this config.  
     ['<Tab>'] = function(fallback)
-      if cmp.visible() then
+      if require("copilot.suggestion").is_visible() then
+        require("copilot.suggestion").accept()
+      elseif cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
